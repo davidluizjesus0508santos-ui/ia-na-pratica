@@ -1,542 +1,172 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IA na Prática</title>
-
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: #050b18;
-    color: white;
-}
-
-header {
-    background: #080f20;
-    padding: 22px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    border-bottom: 1px solid #172b50;
-}
-
-.logo {
-    color: #258cff;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 10px;
-    font-size: 14px;
-}
-
-nav a:hover {
-    color: #258cff;
-}
-
-.hero {
-    min-height: 420px;
-    padding: 100px 8%;
-    background: linear-gradient(120deg, #071329, #102c58);
-}
-
-.hero h1 {
-    font-size: 48px;
-    max-width: 700px;
-    margin-bottom: 20px;
-}
-
-.hero span {
-    color: #258cff;
-}
-
-.hero p {
-    color: #c5d5ec;
-    font-size: 18px;
-    max-width: 550px;
-    line-height: 1.6;
-}
-
-.botao {
-    display: inline-block;
-    background: #1684ff;
-    color: white;
-    padding: 13px 22px;
-    border: none;
-    border-radius: 7px;
-    text-decoration: none;
-    margin-top: 25px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.botao:hover {
-    background: #0066d6;
-}
-
-section {
-    padding: 75px 8%;
-}
-
-.titulo {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: #258cff;
-}
-
-.descricao {
-    color: #c5d5ec;
-    line-height: 1.7;
-    max-width: 750px;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.card {
-    background: #101d34;
-    border: 1px solid #203b65;
-    padding: 25px;
-    border-radius: 12px;
-}
-
-.card h3 {
-    color: #258cff;
-    margin-bottom: 12px;
-}
-
-.card p {
-    color: #c5d5ec;
-    line-height: 1.5;
-}
-
-.quiz-container {
-    max-width: 750px;
-    margin-top: 30px;
-    background: #101d34;
-    border: 1px solid #203b65;
-    border-radius: 12px;
-    padding: 25px;
-}
-
-.progresso {
-    color: #91bce9;
-    margin-bottom: 18px;
-}
-
-#pergunta {
-    font-size: 22px;
-    margin-bottom: 22px;
-}
-
-.alternativa {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    background: #172b4b;
-    border: 1px solid #31547f;
-    color: white;
-    border-radius: 7px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 16px;
-}
-
-.alternativa:hover:not(:disabled) {
-    background: #214777;
-}
-
-.alternativa:disabled {
-    cursor: default;
-    opacity: 0.85;
-}
-
-#feedback {
-    margin-top: 18px;
-    line-height: 1.5;
-    color: #c5d5ec;
-}
-
-#resultado {
-    margin-top: 20px;
-    font-size: 20px;
-    color: #55a8ff;
-}
-
-footer {
-    background: #080f20;
-    padding: 30px;
-    text-align: center;
-    color: #91a9c8;
-    border-top: 1px solid #172b50;
-}
-
-@media (max-width: 600px) {
-    .hero h1 {
-        font-size: 34px;
-    }
-
-    header {
-        justify-content: center;
-    }
-
-    nav {
-        text-align: center;
-    }
-
-    nav a {
-        display: inline-block;
-    }
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#050b18;color:white}
+header{background:#080f20;padding:22px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;border-bottom:1px solid #172b50}
+.logo{color:#258cff;font-size:25px;font-weight:bold}
+nav a{color:white;text-decoration:none;margin:10px;font-size:14px}
+nav a:hover{color:#258cff}
+.hero{min-height:420px;padding:100px 8%;background:linear-gradient(120deg,#071329,#102c58)}
+.hero h1{font-size:48px;max-width:700px;margin-bottom:20px}
+.hero span{color:#258cff}
+.hero p{color:#c5d5ec;font-size:18px;max-width:550px;line-height:1.6}
+.botao{display:inline-block;background:#1684ff;color:white;padding:13px 22px;border:none;border-radius:7px;text-decoration:none;margin-top:25px;cursor:pointer;font-weight:bold}
+.botao:hover{background:#0066d6}
+section{padding:75px 8%}
+.titulo{font-size:32px;margin-bottom:20px;color:#258cff}
+.descricao{color:#c5d5ec;line-height:1.7;max-width:750px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:30px}
+.card{background:#101d34;border:1px solid #203b65;padding:25px;border-radius:12px}
+.card h3{color:#258cff;margin-bottom:12px}
+.card p{color:#c5d5ec;line-height:1.5}
+.quiz-container{max-width:750px;margin-top:30px;background:#101d34;border:1px solid #203b65;border-radius:12px;padding:25px}
+.progresso{color:#91bce9;margin-bottom:18px}
+#pergunta{font-size:22px;margin-bottom:22px}
+.alternativa{display:block;width:100%;padding:15px;margin:10px 0;background:#172b4b;border:1px solid #31547f;color:white;border-radius:7px;cursor:pointer;text-align:left;font-size:16px}
+.alternativa:hover:not(:disabled){background:#214777}
+.alternativa:disabled{cursor:default;opacity:.85}
+#feedback{margin-top:18px;line-height:1.5;color:#c5d5ec}
+#resultado{margin-top:20px;font-size:20px;color:#55a8ff}
+footer{background:#080f20;padding:30px;text-align:center;color:#91a9c8;border-top:1px solid #172b50}
+@media(max-width:600px){.hero h1{font-size:34px}header{justify-content:center}nav{text-align:center}nav a{display:inline-block}}
 </style>
 </head>
-
 <body>
-
 <header>
-    <div class="logo">IA NA PRÁTICA</div>
-
-    <nav>
-        <a href="#inicio">Início</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#equipe">Equipe</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#quiz">Quizzes</a>
-    </nav>
+<div class="logo">IA NA PRÁTICA</div>
+<nav>
+<a href="#inicio">Início</a>
+<a href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a>
+<a href="#projetos">Projetos</a>
+<a href="#quiz">Quizzes</a>
+</nav>
 </header>
 
 <div class="hero" id="inicio">
-    <h1>O FUTURO COMEÇA COM <span>INTELIGÊNCIA.</span></h1>
-
-    <p>
-        Aprenda, descubra e experimente o universo da
-        Inteligência Artificial. A tecnologia está em nossas mãos.
-    </p>
-
-    <a href="#quiz" class="botao">COMEÇAR QUIZ</a>
+<h1>O FUTURO COMEÇA COM <span>INTELIGÊNCIA.</span></h1>
+<p>Aprenda, descubra e experimente o universo da Inteligência Artificial. A tecnologia está em nossas mãos.</p>
+<a href="#quiz" class="botao">COMEÇAR QUIZ</a>
 </div>
 
 <section id="sobre">
-    <h2 class="titulo">Sobre a Eletiva</h2>
-
-    <p class="descricao">
-        A IA na Prática é uma eletiva dedicada à exploração
-        da Inteligência Artificial. Nosso objetivo é aprender
-        como essa tecnologia funciona e descobrir como ela
-        pode transformar o nosso futuro.
-    </p>
+<h2 class="titulo">Sobre a Eletiva</h2>
+<p class="descricao">A IA na Prática é uma eletiva dedicada à exploração da Inteligência Artificial. Nosso objetivo é aprender como essa tecnologia funciona e descobrir como ela pode transformar o nosso futuro.</p>
 </section>
 
 <section id="equipe">
-    <h2 class="titulo">Nossa Equipe</h2>
-
-    <p class="descricao">
-        Uma equipe trabalhando em conjunto para transformar
-        ideias em projetos.
-    </p>
-
-    <div class="cards">
-        <div class="card">
-            <h3>Desenvolvimento</h3>
-            <p>Criação e programação do site e dos projetos.</p>
-        </div>
-
-        <div class="card">
-            <h3>Organização</h3>
-            <p>Planejamento e organização das atividades.</p>
-        </div>
-
-        <div class="card">
-            <h3>Criatividade</h3>
-            <p>Novas ideias e experiências com tecnologia.</p>
-        </div>
-    </div>
+<h2 class="titulo">Nossa Equipe</h2>
+<p class="descricao">Uma equipe trabalhando em conjunto para transformar ideias em projetos.</p>
+<div class="cards">
+<div class="card"><h3>Desenvolvimento</h3><p>Criação e programação do site e dos projetos.</p></div>
+<div class="card"><h3>Organização</h3><p>Planejamento e organização das atividades.</p></div>
+<div class="card"><h3>Criatividade</h3><p>Novas ideias e experiências com tecnologia.</p></div>
+</div>
 </section>
 
 <section id="projetos">
-    <h2 class="titulo">Nossos Projetos</h2>
-
-    <div class="cards">
-        <div class="card">
-            <h3>Laboratório de Ideias</h3>
-            <p>Um espaço para explorar ideias e soluções com IA.</p>
-        </div>
-
-        <div class="card">
-            <h3>Experimentos</h3>
-            <p>Atividades práticas para conhecer novas tecnologias.</p>
-        </div>
-
-        <div class="card">
-            <h3>Aprendizado</h3>
-            <p>Conhecimento sobre inteligência artificial e inovação.</p>
-        </div>
-    </div>
+<h2 class="titulo">Nossos Projetos</h2>
+<div class="cards">
+<div class="card"><h3>Laboratório de Ideias</h3><p>Um espaço para explorar ideias e soluções com IA.</p></div>
+<div class="card"><h3>Experimentos</h3><p>Atividades práticas para conhecer novas tecnologias.</p></div>
+<div class="card"><h3>Aprendizado</h3><p>Conhecimento sobre inteligência artificial e inovação.</p></div>
+</div>
 </section>
 
 <section id="quiz">
-    <h2 class="titulo">Quiz de Inteligência Artificial</h2>
-
-    <p class="descricao">
-        Teste seus conhecimentos! Responda às 10 perguntas
-        e descubra sua pontuação.
-    </p>
-
-    <div class="quiz-container">
-        <div class="progresso" id="progresso"></div>
-
-        <h3 id="pergunta"></h3>
-
-        <div id="alternativas"></div>
-
-        <p id="feedback"></p>
-
-        <button class="botao" id="proximo" onclick="proximaPergunta()" style="display:none">
-            Próxima pergunta
-        </button>
-
-        <div id="resultado"></div>
-
-        <button class="botao" id="reiniciar" onclick="iniciarQuiz()" style="display:none">
-            Refazer quiz
-        </button>
-    </div>
+<h2 class="titulo">Quiz de Inteligência Artificial</h2>
+<p class="descricao">Teste seus conhecimentos! Responda às 10 perguntas e descubra sua pontuação.</p>
+<div class="quiz-container">
+<div class="progresso" id="progresso"></div>
+<h3 id="pergunta"></h3>
+<div id="alternativas"></div>
+<p id="feedback"></p>
+<button class="botao" id="proximo" onclick="proximaPergunta()" style="display:none">Próxima pergunta</button>
+<div id="resultado"></div>
+<button class="botao" id="reiniciar" onclick="iniciarQuiz()" style="display:none">Refazer quiz</button>
+</div>
 </section>
 
-<footer>
-    <p>IA na Prática | Tecnologia, conhecimento e inovação.</p>
-</footer>
+<footer><p>IA na Prática | Tecnologia, conhecimento e inovação.</p></footer>
 
 <script>
-const perguntas = [
-    {
-        pergunta: "O que significa IA?",
-        alternativas: [
-            "Internet Avançada",
-            "Inteligência Artificial",
-            "Informação Automática",
-            "Inovação Atual"
-        ],
-        correta: 1,
-        explicacao: "IA significa Inteligência Artificial."
-    },
-    {
-        pergunta: "Qual é uma das funções da Inteligência Artificial?",
-        alternativas: [
-            "Aprender padrões em dados",
-            "Substituir toda a internet",
-            "Criar energia elétrica",
-            "Consertar qualquer máquina"
-        ],
-        correta: 0,
-        explicacao: "A IA pode identificar padrões e aprender com dados."
-    },
-    {
-        pergunta: "Qual destas ferramentas utiliza IA?",
-        alternativas: [
-            "Calculadora simples",
-            "ChatGPT",
-            "Bloco de notas",
-            "Relógio analógico"
-        ],
-        correta: 1,
-        explicacao: "O ChatGPT utiliza inteligência artificial para gerar respostas."
-    },
-    {
-        pergunta: "O que é um algoritmo?",
-        alternativas: [
-            "Uma sequência de instruções",
-            "Uma peça de computador",
-            "Um tipo de bateria",
-            "Uma rede social"
-        ],
-        correta: 0,
-        explicacao: "Um algoritmo é uma sequência organizada de passos para resolver um problema."
-    },
-    {
-        pergunta: "A IA pode cometer erros?",
-        alternativas: [
-            "Não, nunca",
-            "Somente quando está desligada",
-            "Sim, pode apresentar informações incorretas",
-            "Não, porque sabe tudo"
-        ],
-        correta: 2,
-        explicacao: "A IA pode errar e suas respostas precisam ser verificadas."
-    },
-    {
-        pergunta: "O que são dados no treinamento de IA?",
-        alternativas: [
-            "Informações usadas para ensinar modelos",
-            "Somente imagens de jogos",
-            "Cabos de computador",
-            "Peças eletrônicas"
-        ],
-        correta: 0,
-        explicacao: "Os dados ajudam modelos de IA a identificar padrões."
-    },
-    {
-        pergunta: "Qual é uma atitude responsável ao usar IA?",
-        alternativas: [
-            "Compartilhar qualquer dado pessoal",
-            "Conferir as informações recebidas",
-            "Acreditar em todas as respostas",
-            "Copiar tudo sem entender"
-        ],
-        correta: 1,
-        explicacao: "É importante verificar informações e proteger dados pessoais."
-    },
-    {
-        pergunta: "O que é aprendizado de máquina?",
-        alternativas: [
-            "Uma forma de ensinar máquinas usando dados",
-            "Um tipo de teclado",
-            "Um programa de desenho",
-            "Uma peça de robô"
-        ],
-        correta: 0,
-        explicacao: "Aprendizado de máquina permite que sistemas identifiquem padrões a partir de dados."
-    },
-    {
-        pergunta: "A Inteligência Artificial pode ajudar na educação?",
-        alternativas: [
-            "Não, nunca",
-            "Sim, pode apoiar os estudos e explicar conteúdos",
-            "Somente em escolas de tecnologia",
-            "Apenas para fazer contas"
-        ],
-        correta: 1,
-        explicacao: "A IA pode apoiar o aprendizado, mas não substitui o estudo."
-    },
-    {
-        pergunta: "Quem é responsável por usar a IA de maneira ética?",
-        alternativas: [
-            "Somente os computadores",
-            "Somente os programadores",
-            "As pessoas e organizações que a desenvolvem e utilizam",
-            "Ninguém"
-        ],
-        correta: 2,
-        explicacao: "Desenvolvedores e usuários devem agir com responsabilidade."
-    }
+const perguntas=[
+{pergunta:"O que significa IA?",alternativas:["Internet Avançada","Inteligência Artificial","Informação Automática","Inovação Atual"],correta:1,explicacao:"IA significa Inteligência Artificial."},
+{pergunta:"Qual é uma das funções da Inteligência Artificial?",alternativas:["Aprender padrões em dados","Substituir toda a internet","Criar energia elétrica","Consertar qualquer máquina"],correta:0,explicacao:"A IA pode identificar padrões e aprender com dados."},
+{pergunta:"Qual destas ferramentas utiliza IA?",alternativas:["Calculadora simples","ChatGPT","Bloco de notas","Relógio analógico"],correta:1,explicacao:"O ChatGPT utiliza inteligência artificial para gerar respostas."},
+{pergunta:"O que é um algoritmo?",alternativas:["Uma sequência de instruções","Uma peça de computador","Um tipo de bateria","Uma rede social"],correta:0,explicacao:"Um algoritmo é uma sequência organizada de passos para resolver um problema."},
+{pergunta:"A IA pode cometer erros?",alternativas:["Não, nunca","Somente quando está desligada","Sim, pode apresentar informações incorretas","Não, porque sabe tudo"],correta:2,explicacao:"A IA pode errar e suas respostas precisam ser verificadas."},
+{pergunta:"O que são dados no treinamento de IA?",alternativas:["Informações usadas para ensinar modelos","Somente imagens de jogos","Cabos de computador","Peças eletrônicas"],correta:0,explicacao:"Os dados ajudam modelos de IA a identificar padrões."},
+{pergunta:"Qual é uma atitude responsável ao usar IA?",alternativas:["Compartilhar qualquer dado pessoal","Conferir as informações recebidas","Acreditar em todas as respostas","Copiar tudo sem entender"],correta:1,explicacao:"É importante verificar informações e proteger dados pessoais."},
+{pergunta:"O que é aprendizado de máquina?",alternativas:["Uma forma de ensinar máquinas usando dados","Um tipo de teclado","Um programa de desenho","Uma peça de robô"],correta:0,explicacao:"Aprendizado de máquina permite que sistemas identifiquem padrões a partir de dados."},
+{pergunta:"A Inteligência Artificial pode ajudar na educação?",alternativas:["Não, nunca","Sim, pode apoiar os estudos e explicar conteúdos","Somente em escolas de tecnologia","Apenas para fazer contas"],correta:1,explicacao:"A IA pode apoiar o aprendizado, mas não substitui o estudo."},
+{pergunta:"Quem é responsável por usar a IA de maneira ética?",alternativas:["Somente os computadores","Somente os programadores","As pessoas e organizações que a desenvolvem e utilizam","Ninguém"],correta:2,explicacao:"Desenvolvedores e usuários devem agir com responsabilidade."}
 ];
 
-let atual = 0;
-let pontos = 0;
-let respondeu = false;
+let atual=0,pontos=0,respondeu=false;
 
-function iniciarQuiz() {
-    atual = 0;
-    pontos = 0;
-    respondeu = false;
-
-    document.getElementById("resultado").textContent = "";
-    document.getElementById("reiniciar").style.display = "none";
-
-    mostrarPergunta();
+function iniciarQuiz(){
+atual=0;pontos=0;respondeu=false;
+document.getElementById("resultado").textContent="";
+document.getElementById("reiniciar").style.display="none";
+mostrarPergunta();
 }
 
-function mostrarPergunta() {
-    respondeu = false;
-
-    const p = perguntas[atual];
-
-    document.getElementById("progresso").textContent =
-        "Pergunta " + (atual + 1) + " de " + perguntas.length;
-
-    document.getElementById("pergunta").textContent = p.pergunta;
-
-    document.getElementById("feedback").textContent = "";
-    document.getElementById("proximo").style.display = "none";
-
-    const area = document.getElementById("alternativas");
-    area.innerHTML = "";
-
-    p.alternativas.forEach((alternativa, indice) => {
-        const botao = document.createElement("button");
-
-        botao.className = "alternativa";
-        botao.textContent = String.fromCharCode(65 + indice) + ") " + alternativa;
-
-        botao.onclick = () => verificarResposta(indice, botao);
-
-        area.appendChild(botao);
-    });
+function mostrarPergunta(){
+respondeu=false;
+const p=perguntas[atual];
+document.getElementById("progresso").textContent="Pergunta "+(atual+1)+" de "+perguntas.length;
+document.getElementById("pergunta").textContent=p.pergunta;
+document.getElementById("feedback").textContent="";
+document.getElementById("proximo").style.display="none";
+document.getElementById("proximo").textContent=atual===perguntas.length-1?"Ver resultado":"Próxima pergunta";
+const area=document.getElementById("alternativas");
+area.innerHTML="";
+p.alternativas.forEach((alternativa,indice)=>{
+const botao=document.createElement("button");
+botao.className="alternativa";
+botao.textContent=String.fromCharCode(65+indice)+") "+alternativa;
+botao.onclick=()=>verificarResposta(indice);
+area.appendChild(botao);
+});
 }
 
-function verificarResposta(indice, botaoEscolhido) {
-    if (respondeu) return;
-
-    respondeu = true;
-
-    const p = perguntas[atual];
-    const botoes = document.querySelectorAll(".alternativa");
-
-    botoes.forEach(botao => botao.disabled = true);
-
-    if (indice === p.correta) {
-        pontos++;
-        document.getElementById("feedback").textContent =
-            "Resposta correta! " + p.explicacao;
-    } else {
-        document.getElementById("feedback").textContent =
-            "Resposta incorreta. " + p.explicacao;
-    }
-
-    document.getElementById("proximo").style.display = "inline-block";
-
-    if (atual === perguntas.length - 1) {
-        document.getElementById("proximo").textContent = "Ver resultado";
-    }
+function verificarResposta(indice){
+if(respondeu)return;
+respondeu=true;
+const p=perguntas[atual];
+document.querySelectorAll(".alternativa").forEach(botao=>botao.disabled=true);
+if(indice===p.correta){
+pontos++;
+document.getElementById("feedback").textContent="Resposta correta! "+p.explicacao;
+}else{
+document.getElementById("feedback").textContent="Resposta incorreta. "+p.explicacao;
+}
+document.getElementById("proximo").style.display="inline-block";
 }
 
-function proximaPergunta() {
-    atual++;
-
-    if (atual < perguntas.length) {
-        mostrarPergunta();
-    } else {
-        mostrarResultado();
-    }
+function proximaPergunta(){
+atual++;
+if(atual<perguntas.length)mostrarPergunta();
+else mostrarResultado();
 }
 
-function mostrarResultado() {
-    document.getElementById("progresso").textContent = "Quiz finalizado!";
-    document.getElementById("pergunta").textContent = "Seu resultado";
-    document.getElementById("alternativas").innerHTML = "";
-    document.getElementById("feedback").textContent = "";
-    document.getElementById("proximo").style.display = "none";
-
-    document.getElementById("resultado").textContent =
-        "Você acertou " + pontos + " de " + perguntas.length + " perguntas!";
-
-    document.getElementById("reiniciar").style.display = "inline-block";
+function mostrarResultado(){
+document.getElementById("progresso").textContent="Quiz finalizado!";
+document.getElementById("pergunta").textContent="Seu resultado";
+document.getElementById("alternativas").innerHTML="";
+document.getElementById("feedback").textContent="";
+document.getElementById("proximo").style.display="none";
+document.getElementById("resultado").textContent="Você acertou "+pontos+" de "+perguntas.length+" perguntas!";
+document.getElementById("reiniciar").style.display="inline-block";
 }
-
 iniciarQuiz();
 </script>
-
 </body>
 </html>
