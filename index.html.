@@ -12,7 +12,6 @@
     --navy: #071A35;
     --blue: #1677FF;
     --light: #38BDF8;
-    --white: #FFFFFF;
     --background: #F4F8FF;
     --text: #172B4D;
 }
@@ -55,13 +54,13 @@ header {
 
 nav {
     display: flex;
-    gap: 22px;
+    gap: 18px;
     flex-wrap: wrap;
 }
 
 nav a {
-    text-decoration: none;
     color: white;
+    text-decoration: none;
     font-size: 14px;
     font-weight: bold;
 }
@@ -76,8 +75,8 @@ nav a:hover {
     display: flex;
     align-items: center;
     background:
-    radial-gradient(circle at 80% 30%, #164c91, transparent 35%),
-    linear-gradient(120deg, #071A35, #103c75);
+        radial-gradient(circle at 80% 30%, #164c91, transparent 35%),
+        linear-gradient(120deg, #071A35, #103c75);
     color: white;
 }
 
@@ -122,12 +121,11 @@ nav a:hover {
     text-decoration: none;
     font-weight: bold;
     cursor: pointer;
-    transition: .2s;
+    margin-top: 10px;
 }
 
 .btn:hover {
     background: #005bd1;
-    transform: translateY(-2px);
 }
 
 .btn-light {
@@ -174,7 +172,7 @@ nav a:hover {
     border-color: var(--blue);
 }
 
-.card .symbol {
+.symbol {
     font-size: 30px;
     margin-bottom: 17px;
 }
@@ -188,11 +186,7 @@ nav a:hover {
     color: #64748b;
     line-height: 1.6;
     font-size: 14px;
-}
-
-.card .btn {
-    margin-top: 20px;
-    font-size: 13px;
+    margin-top: 8px;
 }
 
 .blue-section {
@@ -242,7 +236,7 @@ nav a:hover {
     font-size: 15px;
 }
 
-.option:hover {
+.option:hover:not(:disabled) {
     border-color: var(--blue);
     background: #eaf3ff;
 }
@@ -255,6 +249,12 @@ nav a:hover {
 #feedback {
     margin: 18px 0;
     font-weight: bold;
+}
+
+.score {
+    color: var(--blue);
+    font-weight: bold;
+    margin: 15px 0;
 }
 
 .editor-box {
@@ -291,12 +291,6 @@ iframe {
     margin-top: 18px;
 }
 
-.score {
-    color: var(--blue);
-    font-weight: bold;
-    margin: 15px 0;
-}
-
 footer {
     background: var(--navy);
     color: white;
@@ -319,16 +313,12 @@ footer p {
         gap: 13px;
     }
 
-    nav a {
-        font-size: 12px;
-    }
-
     .hero {
         padding: 75px 25px;
     }
 
     .btn-light {
-        margin: 12px 0 0;
+        margin-left: 0;
     }
 }
 </style>
@@ -338,13 +328,13 @@ footer p {
 
 <header>
     <div class="logo">IA <span>NA PRÁTICA</span></div>
-
     <nav>
         <a href="#inicio">Início</a>
         <a href="#aprendizado">Aprendizado</a>
         <a href="#quiz">Quiz</a>
         <a href="#jogos">Jogos</a>
         <a href="#laboratorio">Laboratório</a>
+        <a href="#projetos">Projetos</a>
         <a href="#equipe">Equipe</a>
     </nav>
 </header>
@@ -352,15 +342,12 @@ footer p {
 <section class="hero" id="inicio">
     <div class="hero-content">
         <div class="tag">TECNOLOGIA • INOVAÇÃO • APRENDIZADO</div>
-
         <h1>O futuro começa com <span>uma ideia.</span></h1>
-
         <p>
             Explore o universo da Inteligência Artificial,
             aprenda programação, participe de desafios
             e transforme suas ideias em projetos.
         </p>
-
         <a href="#aprendizado" class="btn">Começar agora</a>
         <a href="#laboratorio" class="btn btn-light">Explorar laboratório</a>
     </div>
@@ -375,31 +362,26 @@ footer p {
     </p>
 
     <div class="grid">
-
         <div class="card">
             <div class="symbol">🤖</div>
             <h3>Inteligência Artificial</h3>
             <p>Entenda como funcionam os sistemas inteligentes e suas aplicações.</p>
         </div>
-
         <div class="card">
             <div class="symbol">💻</div>
             <h3>Programação</h3>
             <p>Aprenda HTML, CSS, JavaScript e lógica de programação.</p>
         </div>
-
         <div class="card">
             <div class="symbol">🧠</div>
             <h3>Engenharia de Prompt</h3>
             <p>Aprenda a criar instruções claras e eficientes para ferramentas de IA.</p>
         </div>
-
         <div class="card">
             <div class="symbol">🔐</div>
             <h3>Segurança Digital</h3>
             <p>Descubra como proteger seus dados e utilizar a tecnologia com responsabilidade.</p>
         </div>
-
     </div>
 </section>
 
@@ -410,20 +392,15 @@ footer p {
             Teste o que você sabe sobre tecnologia e inteligência artificial.
         </p>
 
-        <div class="quiz-box">
+        <div class="quiz-box" id="quizBox">
             <div id="numero">Questão 1 de 10</div>
-
             <div class="progress">
                 <div class="progress-bar" id="barra"></div>
             </div>
-
             <h3 class="question" id="pergunta"></h3>
-
             <div id="alternativas"></div>
-
             <p id="feedback"></p>
             <p class="score" id="pontuacao">Pontuação: 0</p>
-
             <button class="btn" id="proximo" onclick="proxima()" disabled>
                 Próxima questão
             </button>
@@ -433,12 +410,9 @@ footer p {
 
 <section class="container" id="jogos">
     <h2 class="section-title">Jogos educativos</h2>
-    <p class="section-description">
-        Aprenda enquanto resolve desafios.
-    </p>
+    <p class="section-description">Aprenda enquanto resolve desafios.</p>
 
     <div class="grid">
-
         <div class="card">
             <div class="symbol">🧩</div>
             <h3>Desafio da lógica</h3>
@@ -462,7 +436,6 @@ footer p {
             <button class="btn" onclick="jogoTecnologia()">Jogar</button>
             <p id="tecnologia"></p>
         </div>
-
     </div>
 </section>
 
@@ -475,7 +448,6 @@ footer p {
 
         <div class="editor-box">
             <p>Seu código:</p>
-
             <textarea id="codigo" spellcheck="false"><!DOCTYPE html>
 <html>
 <head>
@@ -486,33 +458,21 @@ body {
     font-family: Arial;
     padding: 40px;
 }
-h1 {
-    color: #1677FF;
-}
+h1 { color: #1677FF; }
 </style>
 </head>
 <body>
 <h1>Olá, mundo!</h1>
 <p>Meu primeiro projeto no IA na Prática.</p>
-<button onclick="alert('Funcionou!')">
-Clique aqui
-</button>
+<button onclick="alert('Funcionou!')">Clique aqui</button>
 </body>
 </html></textarea>
 
             <br><br>
-
             <button class="btn" onclick="executar()">Executar código</button>
-
             <button class="btn btn-light" onclick="limpar()">Limpar</button>
-
             <h3 style="margin-top:25px">Resultado:</h3>
-
-            <iframe
-                id="resultado"
-                title="Visualização do código"
-                sandbox="allow-scripts">
-            </iframe>
+            <iframe id="resultado" title="Visualização do código" sandbox="allow-scripts"></iframe>
         </div>
     </div>
 </section>
@@ -524,25 +484,21 @@ Clique aqui
     </p>
 
     <div class="grid">
-
         <div class="card">
             <div class="symbol">🚀</div>
             <h3>Projetos dos alunos</h3>
             <p>Conheça projetos desenvolvidos durante a eletiva.</p>
         </div>
-
         <div class="card">
             <div class="symbol">🌐</div>
             <h3>Experiências digitais</h3>
             <p>Explore experiências criadas com programação e IA.</p>
         </div>
-
         <div class="card">
             <div class="symbol">🏆</div>
             <h3>Desafios da eletiva</h3>
             <p>Desenvolva soluções e coloque seus conhecimentos em prática.</p>
         </div>
-
     </div>
 </section>
 
@@ -554,40 +510,16 @@ Clique aqui
         </p>
 
         <div class="grid">
-
-            <div class="card">
-                <h3>David Luiz</h3>
-                <p>Desenvolvimento e organização.</p>
-            </div>
-
-            <div class="card">
-                <h3>Luis Miguel</h3>
-                <p>Equipe de desenvolvimento.</p>
-            </div>
-
-            <div class="card">
-                <h3>Rafael</h3>
-                <p>Equipe de desenvolvimento.</p>
-            </div>
-
-            <div class="card">
-                <h3>Gilberto</h3>
-                <p>Equipe de desenvolvimento.</p>
-            </div>
-
+            <div class="card"><h3>David Luiz</h3><p>Desenvolvimento e organização.</p></div>
+            <div class="card"><h3>Luis Miguel</h3><p>Equipe de desenvolvimento.</p></div>
+            <div class="card"><h3>Rafael</h3><p>Equipe de desenvolvimento.</p></div>
+            <div class="card"><h3>Gilberto</h3><p>Equipe de desenvolvimento.</p></div>
         </div>
 
         <h2 style="margin-top:45px;color:#071A35">Professores responsáveis</h2>
         <div class="grid" style="margin-top:20px">
-            <div class="card">
-                <h3>Carol</h3>
-                <p>Professora responsável pela eletiva.</p>
-            </div>
-
-            <div class="card">
-                <h3>Letícia</h3>
-                <p>Professora responsável pela eletiva.</p>
-            </div>
+            <div class="card"><h3>Carol</h3><p>Professora responsável pela eletiva.</p></div>
+            <div class="card"><h3>Letícia</h3><p>Professora responsável pela eletiva.</p></div>
         </div>
     </div>
 </section>
@@ -603,56 +535,16 @@ Clique aqui
 
 <script>
 const questoes = [
-{
-p:"O que significa IA?",
-o:["Inteligência Artificial","Internet Avançada","Informação Automática"],
-r:0
-},
-{
-p:"Qual linguagem estrutura páginas web?",
-o:["Python","HTML","Java"],
-r:1
-},
-{
-p:"O que é um algoritmo?",
-o:["Um computador","Uma sequência de instruções","Um aplicativo"],
-r:1
-},
-{
-p:"Qual linguagem adiciona interatividade às páginas?",
-o:["CSS","HTML","JavaScript"],
-r:2
-},
-{
-p:"O que é machine learning?",
-o:["Aprendizado de máquina","Um navegador","Um sistema operacional"],
-r:0
-},
-{
-p:"Qual linguagem é bastante utilizada em IA?",
-o:["CSS","Python","HTML"],
-r:1
-},
-{
-p:"O que é um prompt?",
-o:["Uma instrução enviada à IA","Um computador","Um arquivo de imagem"],
-r:0
-},
-{
-p:"A IA pode reconhecer imagens?",
-o:["Não","Sim","Somente números"],
-r:1
-},
-{
-p:"O que é segurança digital?",
-o:["Compartilhar senhas","Proteger informações","Desativar antivírus"],
-r:1
-},
-{
-p:"Como devemos utilizar a inteligência artificial?",
-o:["Sem verificar resultados","Com responsabilidade","Para substituir todo aprendizado"],
-r:1
-}
+{p:"O que significa IA?",o:["Inteligência Artificial","Internet Avançada","Informação Automática"],r:0},
+{p:"Qual linguagem estrutura páginas web?",o:["Python","HTML","Java"],r:1},
+{p:"O que é um algoritmo?",o:["Um computador","Uma sequência de instruções","Um aplicativo"],r:1},
+{p:"Qual linguagem adiciona interatividade às páginas?",o:["CSS","HTML","JavaScript"],r:2},
+{p:"O que é machine learning?",o:["Aprendizado de máquina","Um navegador","Um sistema operacional"],r:0},
+{p:"Qual linguagem é bastante utilizada em IA?",o:["CSS","Python","HTML"],r:1},
+{p:"O que é um prompt?",o:["Uma instrução enviada à IA","Um computador","Um arquivo de imagem"],r:0},
+{p:"A IA pode reconhecer imagens?",o:["Não","Sim","Somente números"],r:1},
+{p:"O que é segurança digital?",o:["Compartilhar senhas","Proteger informações","Desativar antivírus"],r:1},
+{p:"Como devemos utilizar a inteligência artificial?",o:["Sem verificar resultados","Com responsabilidade","Para substituir todo aprendizado"],r:1}
 ];
 
 let atual = 0;
@@ -668,14 +560,9 @@ function carregar() {
     document.getElementById("barra").style.width =
         ((atual + 1) / questoes.length * 100) + "%";
 
-    document.getElementById("pergunta").textContent =
-        questoes[atual].p;
-
+    document.getElementById("pergunta").textContent = questoes[atual].p;
     document.getElementById("feedback").textContent = "";
-
-    document.getElementById("pontuacao").textContent =
-        "Pontuação: " + pontos;
-
+    document.getElementById("pontuacao").textContent = "Pontuação: " + pontos;
     document.getElementById("proximo").disabled = true;
 
     const area = document.getElementById("alternativas");
@@ -684,7 +571,7 @@ function carregar() {
     questoes[atual].o.forEach((opcao, i) => {
         const botao = document.createElement("button");
         botao.className = "option";
-        botao.textContent = opcao;
+        botao.textContent = String.fromCharCode(65 + i) + ") " + opcao;
         botao.onclick = () => responder(i);
         area.appendChild(botao);
     });
@@ -692,43 +579,34 @@ function carregar() {
 
 function responder(i) {
     if (respondeu) return;
-
     respondeu = true;
 
     const correta = questoes[atual].r;
+    const feedback = document.getElementById("feedback");
 
     if (i === correta) {
         pontos++;
-        document.getElementById("feedback").textContent =
-            "Resposta correta!";
-        document.getElementById("feedback").style.color = "#16803c";
+        feedback.textContent = "Resposta correta!";
+        feedback.style.color = "#16803c";
     } else {
-        document.getElementById("feedback").textContent =
-            "Resposta incorreta. Correta: " + questoes[atual].o[correta];
-        document.getElementById("feedback").style.color = "#d13c3c";
+        feedback.textContent = "Resposta incorreta. Correta: " + questoes[atual].o[correta];
+        feedback.style.color = "#d13c3c";
     }
 
-    document.getElementById("pontuacao").textContent =
-        "Pontuação: " + pontos;
-
+    document.getElementById("pontuacao").textContent = "Pontuação: " + pontos;
     document.querySelectorAll(".option").forEach(b => b.disabled = true);
-
     document.getElementById("proximo").disabled = false;
 }
 
 function proxima() {
     if (!respondeu) return;
-
     atual++;
 
     if (atual >= questoes.length) {
-        document.querySelector(".quiz-box").innerHTML = `
+        document.getElementById("quizBox").innerHTML = `
             <h2>Desafio concluído!</h2>
-            <h1 style="color:#1677FF;font-size:55px;margin:20px 0">
-                ${pontos}/10
-            </h1>
+            <h1 style="color:#1677FF;font-size:55px;margin:20px 0">${pontos}/10</h1>
             <p>Você finalizou o quiz de tecnologia!</p>
-            <br>
             <button class="btn" onclick="reiniciar()">Refazer quiz</button>
         `;
         return;
@@ -741,50 +619,34 @@ function reiniciar() {
     atual = 0;
     pontos = 0;
 
-    document.querySelector(".quiz-box").innerHTML = `
+    document.getElementById("quizBox").innerHTML = `
         <div id="numero"></div>
-        <div class="progress">
-            <div class="progress-bar" id="barra"></div>
-        </div>
+        <div class="progress"><div class="progress-bar" id="barra"></div></div>
         <h3 class="question" id="pergunta"></h3>
         <div id="alternativas"></div>
         <p id="feedback"></p>
         <p class="score" id="pontuacao"></p>
-        <button class="btn" id="proximo" onclick="proxima" disabled>
-            Próxima questão
-        </button>
+        <button class="btn" id="proximo" onclick="proxima()" disabled>Próxima questão</button>
     `;
 
-    document.getElementById("proximo").onclick = proxima;
     carregar();
 }
 
 function jogoLogica() {
-    const resposta = prompt("Complete a sequência: 2, 4, 6, 8, ?");
-    const resultado = document.getElementById("logica");
-
-    resultado.textContent =
-        resposta === "10"
-        ? "Correto! Você acertou!"
-        : "Não foi dessa vez. A resposta era 10.";
+    const resposta = prompt("Complete: 2, 4, 6, 8, ?");
+    document.getElementById("logica").textContent =
+        resposta === "10" ? "Correto! Você acertou!" : "A resposta era 10.";
 }
 
 function jogoMatematica() {
     const resposta = prompt("Quanto é 12 x 8?");
-    const resultado = document.getElementById("matematica");
-
-    resultado.textContent =
-        resposta === "96"
-        ? "Resposta correta!"
-        : "Resposta incorreta. O resultado é 96.";
+    document.getElementById("matematica").textContent =
+        resposta === "96" ? "Resposta correta!" : "O resultado é 96.";
 }
 
 function jogoTecnologia() {
     const resposta = prompt("Qual linguagem é usada para estilizar páginas web?");
-
-    const resultado = document.getElementById("tecnologia");
-
-    resultado.textContent =
+    document.getElementById("tecnologia").textContent =
         resposta && resposta.trim().toLowerCase() === "css"
         ? "Correto! CSS estiliza páginas web."
         : "A resposta correta é CSS.";
