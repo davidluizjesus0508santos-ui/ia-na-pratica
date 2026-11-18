@@ -4,199 +4,331 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IA na Prática</title>
+<meta name="theme-color" content="#071A35">
+<title>IA na Prática | Tecnologia e Inovação</title>
 
 <style>
+:root {
+    --navy: #071A35;
+    --blue: #1677FF;
+    --light: #38BDF8;
+    --white: #FFFFFF;
+    --background: #F4F8FF;
+    --text: #172B4D;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
-    background: #080d0b;
-    color: white;
+    background: var(--background);
+    color: var(--text);
 }
 
 header {
-    background: #101b15;
-    padding: 22px 8%;
+    background: var(--navy);
+    color: white;
+    padding: 18px 7%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 15px;
-    border-bottom: 1px solid #1b3828;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
-    color: #38e878;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: bold;
 }
 
+.logo span {
+    color: var(--light);
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
 nav a {
-    color: white;
     text-decoration: none;
-    margin-left: 20px;
+    color: white;
+    font-size: 14px;
     font-weight: bold;
 }
 
 nav a:hover {
-    color: #38e878;
+    color: var(--light);
 }
 
 .hero {
-    text-align: center;
-    padding: 100px 20px;
-    background: radial-gradient(circle, #123d25, #080d0b 70%);
+    min-height: 510px;
+    padding: 100px 8%;
+    display: flex;
+    align-items: center;
+    background:
+    radial-gradient(circle at 80% 30%, #164c91, transparent 35%),
+    linear-gradient(120deg, #071A35, #103c75);
+    color: white;
+}
+
+.hero-content {
+    max-width: 720px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 9px 15px;
+    border: 1px solid #5daaff;
+    border-radius: 30px;
+    color: #8fd8ff;
+    margin-bottom: 25px;
+    font-size: 13px;
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.1;
+    margin-bottom: 22px;
 }
 
 .hero h1 span {
-    color: #38e878;
+    color: var(--light);
 }
 
 .hero p {
-    color: #b8c9bd;
+    color: #d0e4ff;
     font-size: 18px;
+    line-height: 1.7;
     margin-bottom: 30px;
 }
 
-.botao {
+.btn {
     display: inline-block;
-    background: #38e878;
-    color: #06140b;
-    padding: 14px 25px;
+    padding: 14px 23px;
+    border: none;
     border-radius: 8px;
+    background: var(--blue);
+    color: white;
     text-decoration: none;
     font-weight: bold;
-    border: none;
     cursor: pointer;
+    transition: .2s;
 }
 
-section {
-    padding: 65px 8%;
+.btn:hover {
+    background: #005bd1;
+    transform: translateY(-2px);
 }
 
-.titulo {
-    text-align: center;
+.btn-light {
+    background: white;
+    color: var(--navy);
+    margin-left: 10px;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 75px 25px;
+    margin: auto;
+}
+
+.section-title {
     font-size: 32px;
+    color: var(--navy);
+    margin-bottom: 12px;
+}
+
+.section-description {
+    color: #64748b;
     margin-bottom: 35px;
+    line-height: 1.6;
 }
 
-.titulo span {
-    color: #38e878;
-}
-
-.cards {
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 22px;
 }
 
 .card {
-    background: #111d16;
-    padding: 28px;
-    border: 1px solid #244632;
-    border-radius: 12px;
-    transition: 0.3s;
+    background: white;
+    padding: 27px;
+    border-radius: 13px;
+    border: 1px solid #dce8f7;
+    box-shadow: 0 5px 20px #0b2c5010;
+    transition: .25s;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    border-color: #38e878;
+    border-color: var(--blue);
+}
+
+.card .symbol {
+    font-size: 30px;
+    margin-bottom: 17px;
 }
 
 .card h3 {
-    color: #38e878;
-    margin-bottom: 15px;
+    color: var(--navy);
+    margin-bottom: 12px;
 }
 
 .card p {
-    color: #bdc9c0;
+    color: #64748b;
     line-height: 1.6;
+    font-size: 14px;
 }
 
-.quiz {
-    max-width: 700px;
-    margin: auto;
-    background: #111d16;
-    border: 1px solid #244632;
-    border-radius: 12px;
-    padding: 30px;
-}
-
-.quiz h3 {
-    margin-bottom: 20px;
-}
-
-.opcao {
-    display: block;
-    width: 100%;
-    background: #1a2b20;
-    color: white;
-    border: 1px solid #31543b;
-    padding: 14px;
-    border-radius: 8px;
-    margin: 10px 0;
-    text-align: left;
-    cursor: pointer;
-}
-
-.opcao:hover {
-    background: #245334;
-}
-
-#resultado {
+.card .btn {
     margin-top: 20px;
-    color: #38e878;
+    font-size: 13px;
+}
+
+.blue-section {
+    background: #e8f2ff;
+}
+
+.quiz-box {
+    max-width: 750px;
+    margin: auto;
+    padding: 32px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px #071a3510;
+}
+
+.progress {
+    height: 9px;
+    background: #e5eaf1;
+    border-radius: 20px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--blue);
+    transition: .3s;
+}
+
+.question {
+    font-size: 21px;
+    margin: 20px 0;
+    color: var(--navy);
+}
+
+.option {
+    width: 100%;
+    padding: 15px;
+    margin: 7px 0;
+    border: 1px solid #dce8f7;
+    background: #f7faff;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    color: var(--text);
+    font-size: 15px;
+}
+
+.option:hover {
+    border-color: var(--blue);
+    background: #eaf3ff;
+}
+
+.option:disabled {
+    cursor: default;
+    opacity: .8;
+}
+
+#feedback {
+    margin: 18px 0;
     font-weight: bold;
 }
 
-.editor {
-    max-width: 850px;
-    margin: auto;
+.editor-box {
+    background: var(--navy);
+    color: white;
+    padding: 28px;
+    border-radius: 14px;
+}
+
+.editor-box p {
+    color: #c6ddff;
+    margin-bottom: 15px;
 }
 
 textarea {
     width: 100%;
-    min-height: 180px;
-    background: #050907;
-    color: #38e878;
-    border: 1px solid #31543b;
-    padding: 18px;
+    min-height: 230px;
+    padding: 17px;
+    background: #061326;
+    color: #a8d5ff;
+    border: 1px solid #315a8c;
     border-radius: 8px;
     font-family: monospace;
-    font-size: 15px;
+    font-size: 14px;
     resize: vertical;
 }
 
-.editor button {
-    margin-top: 15px;
+iframe {
+    width: 100%;
+    height: 300px;
+    background: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 18px;
+}
+
+.score {
+    color: var(--blue);
+    font-weight: bold;
+    margin: 15px 0;
 }
 
 footer {
+    background: var(--navy);
+    color: white;
     text-align: center;
-    padding: 30px;
-    background: #101b15;
-    color: #9caf9f;
-    border-top: 1px solid #244632;
+    padding: 45px 20px;
 }
 
-@media(max-width:600px) {
-    .hero h1 {
-        font-size: 34px;
+footer p {
+    color: #b8d3f3;
+    margin-top: 10px;
+}
+
+@media(max-width:700px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 13px;
     }
 
     nav a {
-        margin-left: 8px;
-        font-size: 13px;
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 75px 25px;
+    }
+
+    .btn-light {
+        margin: 12px 0 0;
     }
 }
 </style>
@@ -205,231 +337,471 @@ footer {
 <body>
 
 <header>
-    <div class="logo">IA NA PRÁTICA</div>
+    <div class="logo">IA <span>NA PRÁTICA</span></div>
 
     <nav>
         <a href="#inicio">Início</a>
-        <a href="#projetos">Projetos</a>
+        <a href="#aprendizado">Aprendizado</a>
         <a href="#quiz">Quiz</a>
+        <a href="#jogos">Jogos</a>
+        <a href="#laboratorio">Laboratório</a>
         <a href="#equipe">Equipe</a>
     </nav>
 </header>
 
+<section class="hero" id="inicio">
+    <div class="hero-content">
+        <div class="tag">TECNOLOGIA • INOVAÇÃO • APRENDIZADO</div>
+
+        <h1>O futuro começa com <span>uma ideia.</span></h1>
+
+        <p>
+            Explore o universo da Inteligência Artificial,
+            aprenda programação, participe de desafios
+            e transforme suas ideias em projetos.
+        </p>
+
+        <a href="#aprendizado" class="btn">Começar agora</a>
+        <a href="#laboratorio" class="btn btn-light">Explorar laboratório</a>
+    </div>
+</section>
+
 <main>
 
-<section class="hero" id="inicio">
-    <h1>O FUTURO É <span>AGORA</span></h1>
-    <p>Aprenda, experimente e descubra o mundo da Inteligência Artificial.</p>
-    <a href="#projetos" class="botao">Explorar projetos</a>
-</section>
+<section class="container" id="aprendizado">
+    <h2 class="section-title">Central de aprendizado</h2>
+    <p class="section-description">
+        Descubra novas tecnologias e desenvolva suas habilidades.
+    </p>
 
-<section id="sobre">
-    <h2 class="titulo">Sobre a <span>Eletiva</span></h2>
+    <div class="grid">
 
-    <div class="cards">
-        <article class="card">
-            <h3>O que é IA?</h3>
-            <p>Conheça a inteligência artificial e descubra como ela está transformando o mundo.</p>
-        </article>
-
-        <article class="card">
-            <h3>Aprendizado</h3>
-            <p>Aprenda conceitos, ferramentas e aplicações da inteligência artificial.</p>
-        </article>
-
-        <article class="card">
-            <h3>Na prática</h3>
-            <p>Desenvolva experiências, atividades e projetos tecnológicos.</p>
-        </article>
-    </div>
-</section>
-
-<section id="projetos">
-    <h2 class="titulo">Nossos <span>Projetos</span></h2>
-
-    <div class="cards">
-        <article class="card">
-            <h3>Programação</h3>
-            <p>Experimente códigos e descubra como os programas funcionam.</p>
-        </article>
-
-        <article class="card">
+        <div class="card">
+            <div class="symbol">🤖</div>
             <h3>Inteligência Artificial</h3>
-            <p>Explore ferramentas de IA e suas possibilidades.</p>
-        </article>
+            <p>Entenda como funcionam os sistemas inteligentes e suas aplicações.</p>
+        </div>
 
-        <article class="card">
-            <h3>Desafios tecnológicos</h3>
-            <p>Resolva problemas usando criatividade e raciocínio lógico.</p>
-        </article>
+        <div class="card">
+            <div class="symbol">💻</div>
+            <h3>Programação</h3>
+            <p>Aprenda HTML, CSS, JavaScript e lógica de programação.</p>
+        </div>
+
+        <div class="card">
+            <div class="symbol">🧠</div>
+            <h3>Engenharia de Prompt</h3>
+            <p>Aprenda a criar instruções claras e eficientes para ferramentas de IA.</p>
+        </div>
+
+        <div class="card">
+            <div class="symbol">🔐</div>
+            <h3>Segurança Digital</h3>
+            <p>Descubra como proteger seus dados e utilizar a tecnologia com responsabilidade.</p>
+        </div>
+
     </div>
 </section>
 
-<section id="quiz">
-    <h2 class="titulo">Quiz de <span>Tecnologia</span></h2>
+<section class="blue-section" id="quiz">
+    <div class="container">
+        <h2 class="section-title">Desafio de conhecimentos</h2>
+        <p class="section-description">
+            Teste o que você sabe sobre tecnologia e inteligência artificial.
+        </p>
 
-    <div class="quiz">
-        <h3 id="pergunta">1. O que significa IA?</h3>
-        <div id="opcoes"></div>
-        <p id="resultado"></p>
-        <button class="botao" onclick="proximaPergunta()">Próxima pergunta</button>
+        <div class="quiz-box">
+            <div id="numero">Questão 1 de 10</div>
+
+            <div class="progress">
+                <div class="progress-bar" id="barra"></div>
+            </div>
+
+            <h3 class="question" id="pergunta"></h3>
+
+            <div id="alternativas"></div>
+
+            <p id="feedback"></p>
+            <p class="score" id="pontuacao">Pontuação: 0</p>
+
+            <button class="btn" id="proximo" onclick="proxima()" disabled>
+                Próxima questão
+            </button>
+        </div>
     </div>
 </section>
 
-<section id="codigo">
-    <h2 class="titulo">Laboratório de <span>Código</span></h2>
+<section class="container" id="jogos">
+    <h2 class="section-title">Jogos educativos</h2>
+    <p class="section-description">
+        Aprenda enquanto resolve desafios.
+    </p>
 
-    <div class="editor">
-        <p>Escreva seu código HTML abaixo:</p>
-        <br>
+    <div class="grid">
 
-        <textarea id="codigoUsuario" placeholder="Digite seu código HTML aqui..."></textarea>
+        <div class="card">
+            <div class="symbol">🧩</div>
+            <h3>Desafio da lógica</h3>
+            <p>Descubra o próximo número da sequência.</p>
+            <button class="btn" onclick="jogoLogica()">Jogar</button>
+            <p id="logica"></p>
+        </div>
 
-        <button class="botao" onclick="executarCodigo()">Executar código</button>
+        <div class="card">
+            <div class="symbol">🔢</div>
+            <h3>Desafio matemático</h3>
+            <p>Resolva uma operação matemática.</p>
+            <button class="btn" onclick="jogoMatematica()">Jogar</button>
+            <p id="matematica"></p>
+        </div>
 
-        <h3 style="margin:25px 0 15px;">Resultado:</h3>
+        <div class="card">
+            <div class="symbol">💡</div>
+            <h3>Desafio tecnológico</h3>
+            <p>Descubra conceitos importantes da tecnologia.</p>
+            <button class="btn" onclick="jogoTecnologia()">Jogar</button>
+            <p id="tecnologia"></p>
+        </div>
 
-        <iframe id="resultadoCodigo"
-            title="Resultado do código"
-            sandbox="allow-scripts"
-            style="width:100%;height:250px;background:white;border-radius:8px;border:0;">
-        </iframe>
     </div>
 </section>
 
-<section id="equipe">
-    <h2 class="titulo">Nossa <span>Equipe</span></h2>
+<section class="blue-section" id="laboratorio">
+    <div class="container">
+        <h2 class="section-title">Laboratório de programação</h2>
+        <p class="section-description">
+            Escreva seu próprio código HTML, CSS e JavaScript e veja o resultado.
+        </p>
 
-    <div class="cards">
-        <article class="card">
-            <h3>David Luiz</h3>
-            <p>Desenvolvimento e organização.</p>
-        </article>
+        <div class="editor-box">
+            <p>Seu código:</p>
 
-        <article class="card">
-            <h3>Luis Miguel</h3>
-            <p>Equipe de desenvolvimento.</p>
-        </article>
+            <textarea id="codigo" spellcheck="false"><!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background: #eaf3ff;
+    text-align: center;
+    font-family: Arial;
+    padding: 40px;
+}
+h1 {
+    color: #1677FF;
+}
+</style>
+</head>
+<body>
+<h1>Olá, mundo!</h1>
+<p>Meu primeiro projeto no IA na Prática.</p>
+<button onclick="alert('Funcionou!')">
+Clique aqui
+</button>
+</body>
+</html></textarea>
 
-        <article class="card">
-            <h3>Rafael</h3>
-            <p>Equipe de desenvolvimento.</p>
-        </article>
+            <br><br>
 
-        <article class="card">
-            <h3>Gilberto</h3>
-            <p>Equipe de desenvolvimento.</p>
-        </article>
+            <button class="btn" onclick="executar()">Executar código</button>
+
+            <button class="btn btn-light" onclick="limpar()">Limpar</button>
+
+            <h3 style="margin-top:25px">Resultado:</h3>
+
+            <iframe
+                id="resultado"
+                title="Visualização do código"
+                sandbox="allow-scripts">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<section class="container" id="projetos">
+    <h2 class="section-title">Projetos e criatividade</h2>
+    <p class="section-description">
+        Um espaço para apresentar ideias e experiências tecnológicas.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="symbol">🚀</div>
+            <h3>Projetos dos alunos</h3>
+            <p>Conheça projetos desenvolvidos durante a eletiva.</p>
+        </div>
+
+        <div class="card">
+            <div class="symbol">🌐</div>
+            <h3>Experiências digitais</h3>
+            <p>Explore experiências criadas com programação e IA.</p>
+        </div>
+
+        <div class="card">
+            <div class="symbol">🏆</div>
+            <h3>Desafios da eletiva</h3>
+            <p>Desenvolva soluções e coloque seus conhecimentos em prática.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="blue-section" id="equipe">
+    <div class="container">
+        <h2 class="section-title">Nossa equipe</h2>
+        <p class="section-description">
+            Conheça quem participa do desenvolvimento do projeto.
+        </p>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>David Luiz</h3>
+                <p>Desenvolvimento e organização.</p>
+            </div>
+
+            <div class="card">
+                <h3>Luis Miguel</h3>
+                <p>Equipe de desenvolvimento.</p>
+            </div>
+
+            <div class="card">
+                <h3>Rafael</h3>
+                <p>Equipe de desenvolvimento.</p>
+            </div>
+
+            <div class="card">
+                <h3>Gilberto</h3>
+                <p>Equipe de desenvolvimento.</p>
+            </div>
+
+        </div>
+
+        <h2 style="margin-top:45px;color:#071A35">Professores responsáveis</h2>
+        <div class="grid" style="margin-top:20px">
+            <div class="card">
+                <h3>Carol</h3>
+                <p>Professora responsável pela eletiva.</p>
+            </div>
+
+            <div class="card">
+                <h3>Letícia</h3>
+                <p>Professora responsável pela eletiva.</p>
+            </div>
+        </div>
     </div>
 </section>
 
 </main>
 
 <footer>
-    <p>IA na Prática © 2026</p>
-    <p>Professores: Carol e Letícia</p>
-    <p>Aprender. Criar. Inovar.</p>
+    <div class="logo">IA <span>NA PRÁTICA</span></div>
+    <p>Aprender. Experimentar. Inovar.</p>
+    <p>Projeto educacional de tecnologia e inteligência artificial.</p>
+    <p>© 2026 IA na Prática. Todos os direitos reservados.</p>
 </footer>
 
 <script>
-const perguntas = [
-    {
-        pergunta: "1. O que significa IA?",
-        opcoes: ["Internet Avançada", "Inteligência Artificial", "Informação Automática"],
-        correta: 1
-    },
-    {
-        pergunta: "2. Qual linguagem é usada para estruturar páginas web?",
-        opcoes: ["HTML", "Python", "Java"],
-        correta: 0
-    },
-    {
-        pergunta: "3. Qual é uma aplicação da inteligência artificial?",
-        opcoes: ["Calculadora comum", "Reconhecimento de imagens", "Lápis"],
-        correta: 1
-    },
-    {
-        pergunta: "4. O que é um algoritmo?",
-        opcoes: ["Uma sequência de instruções", "Um computador", "Uma rede social"],
-        correta: 0
-    },
-    {
-        pergunta: "5. Qual linguagem é usada para criar interatividade em páginas web?",
-        opcoes: ["CSS", "JavaScript", "HTML"],
-        correta: 1
-    }
+const questoes = [
+{
+p:"O que significa IA?",
+o:["Inteligência Artificial","Internet Avançada","Informação Automática"],
+r:0
+},
+{
+p:"Qual linguagem estrutura páginas web?",
+o:["Python","HTML","Java"],
+r:1
+},
+{
+p:"O que é um algoritmo?",
+o:["Um computador","Uma sequência de instruções","Um aplicativo"],
+r:1
+},
+{
+p:"Qual linguagem adiciona interatividade às páginas?",
+o:["CSS","HTML","JavaScript"],
+r:2
+},
+{
+p:"O que é machine learning?",
+o:["Aprendizado de máquina","Um navegador","Um sistema operacional"],
+r:0
+},
+{
+p:"Qual linguagem é bastante utilizada em IA?",
+o:["CSS","Python","HTML"],
+r:1
+},
+{
+p:"O que é um prompt?",
+o:["Uma instrução enviada à IA","Um computador","Um arquivo de imagem"],
+r:0
+},
+{
+p:"A IA pode reconhecer imagens?",
+o:["Não","Sim","Somente números"],
+r:1
+},
+{
+p:"O que é segurança digital?",
+o:["Compartilhar senhas","Proteger informações","Desativar antivírus"],
+r:1
+},
+{
+p:"Como devemos utilizar a inteligência artificial?",
+o:["Sem verificar resultados","Com responsabilidade","Para substituir todo aprendizado"],
+r:1
+}
 ];
 
 let atual = 0;
-let pontuacao = 0;
+let pontos = 0;
 let respondeu = false;
 
-function carregarPergunta() {
+function carregar() {
     respondeu = false;
 
-    const p = perguntas[atual];
+    document.getElementById("numero").textContent =
+        `Questão ${atual + 1} de ${questoes.length}`;
 
-    document.getElementById("pergunta").textContent = p.pergunta;
-    document.getElementById("resultado").textContent = "";
+    document.getElementById("barra").style.width =
+        ((atual + 1) / questoes.length * 100) + "%";
 
-    const opcoes = document.getElementById("opcoes");
-    opcoes.innerHTML = "";
+    document.getElementById("pergunta").textContent =
+        questoes[atual].p;
 
-    p.opcoes.forEach((opcao, indice) => {
+    document.getElementById("feedback").textContent = "";
+
+    document.getElementById("pontuacao").textContent =
+        "Pontuação: " + pontos;
+
+    document.getElementById("proximo").disabled = true;
+
+    const area = document.getElementById("alternativas");
+    area.innerHTML = "";
+
+    questoes[atual].o.forEach((opcao, i) => {
         const botao = document.createElement("button");
-        botao.className = "opcao";
+        botao.className = "option";
         botao.textContent = opcao;
-        botao.onclick = () => responder(indice);
-        opcoes.appendChild(botao);
+        botao.onclick = () => responder(i);
+        area.appendChild(botao);
     });
 }
 
-function responder(indice) {
+function responder(i) {
     if (respondeu) return;
 
     respondeu = true;
 
-    if (indice === perguntas[atual].correta) {
-        pontuacao++;
-        document.getElementById("resultado").textContent = "Resposta correta!";
+    const correta = questoes[atual].r;
+
+    if (i === correta) {
+        pontos++;
+        document.getElementById("feedback").textContent =
+            "Resposta correta!";
+        document.getElementById("feedback").style.color = "#16803c";
     } else {
-        document.getElementById("resultado").textContent =
-            "Resposta incorreta! Correta: " +
-            perguntas[atual].opcoes[perguntas[atual].correta];
+        document.getElementById("feedback").textContent =
+            "Resposta incorreta. Correta: " + questoes[atual].o[correta];
+        document.getElementById("feedback").style.color = "#d13c3c";
     }
+
+    document.getElementById("pontuacao").textContent =
+        "Pontuação: " + pontos;
+
+    document.querySelectorAll(".option").forEach(b => b.disabled = true);
+
+    document.getElementById("proximo").disabled = false;
 }
 
-function proximaPergunta() {
-    if (!respondeu) {
-        document.getElementById("resultado").textContent =
-            "Responda antes de continuar!";
-        return;
-    }
+function proxima() {
+    if (!respondeu) return;
 
     atual++;
 
-    if (atual >= perguntas.length) {
-        document.getElementById("pergunta").textContent =
-            "Quiz finalizado!";
-
-        document.getElementById("opcoes").innerHTML = "";
-
-        document.getElementById("resultado").textContent =
-            "Você acertou " + pontuacao + " de " + perguntas.length + " perguntas!";
-
+    if (atual >= questoes.length) {
+        document.querySelector(".quiz-box").innerHTML = `
+            <h2>Desafio concluído!</h2>
+            <h1 style="color:#1677FF;font-size:55px;margin:20px 0">
+                ${pontos}/10
+            </h1>
+            <p>Você finalizou o quiz de tecnologia!</p>
+            <br>
+            <button class="btn" onclick="reiniciar()">Refazer quiz</button>
+        `;
         return;
     }
 
-    carregarPergunta();
+    carregar();
 }
 
-function executarCodigo() {
-    const codigo = document.getElementById("codigoUsuario").value;
+function reiniciar() {
+    atual = 0;
+    pontos = 0;
 
-    document.getElementById("resultadoCodigo").srcdoc = codigo;
+    document.querySelector(".quiz-box").innerHTML = `
+        <div id="numero"></div>
+        <div class="progress">
+            <div class="progress-bar" id="barra"></div>
+        </div>
+        <h3 class="question" id="pergunta"></h3>
+        <div id="alternativas"></div>
+        <p id="feedback"></p>
+        <p class="score" id="pontuacao"></p>
+        <button class="btn" id="proximo" onclick="proxima" disabled>
+            Próxima questão
+        </button>
+    `;
+
+    document.getElementById("proximo").onclick = proxima;
+    carregar();
 }
 
-carregarPergunta();
+function jogoLogica() {
+    const resposta = prompt("Complete a sequência: 2, 4, 6, 8, ?");
+    const resultado = document.getElementById("logica");
+
+    resultado.textContent =
+        resposta === "10"
+        ? "Correto! Você acertou!"
+        : "Não foi dessa vez. A resposta era 10.";
+}
+
+function jogoMatematica() {
+    const resposta = prompt("Quanto é 12 x 8?");
+    const resultado = document.getElementById("matematica");
+
+    resultado.textContent =
+        resposta === "96"
+        ? "Resposta correta!"
+        : "Resposta incorreta. O resultado é 96.";
+}
+
+function jogoTecnologia() {
+    const resposta = prompt("Qual linguagem é usada para estilizar páginas web?");
+
+    const resultado = document.getElementById("tecnologia");
+
+    resultado.textContent =
+        resposta && resposta.trim().toLowerCase() === "css"
+        ? "Correto! CSS estiliza páginas web."
+        : "A resposta correta é CSS.";
+}
+
+function executar() {
+    const codigo = document.getElementById("codigo").value;
+    document.getElementById("resultado").srcdoc = codigo;
+}
+
+function limpar() {
+    document.getElementById("codigo").value = "";
+    document.getElementById("resultado").srcdoc = "";
+}
+
+carregar();
+executar();
 </script>
 
 </body>
