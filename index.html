@@ -11,158 +11,155 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
     background: #080808;
     color: white;
+    min-height: 100vh;
 }
 
 header {
-    background: #111;
-    padding: 25px 8%;
-    border-bottom: 1px solid #c49a42;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    color: #d6ad55;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-}
-
-.hero {
-    min-height: 420px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 30px 20px;
     text-align: center;
-    padding: 40px 20px;
-    background: radial-gradient(circle, #292014, #080808 70%);
+    border-bottom: 1px solid #c9a448;
 }
 
-.hero h1 {
-    font-size: 52px;
-    margin-bottom: 20px;
+header h1 {
+    color: #d8b45a;
+    font-size: 32px;
+    letter-spacing: 3px;
 }
 
-.hero h1 span {
-    color: #d6ad55;
+header p {
+    color: #aaa;
+    margin-top: 10px;
 }
 
-.hero p {
-    color: #bbb;
-    font-size: 18px;
-    max-width: 650px;
-    line-height: 1.6;
-}
-
-section {
-    padding: 65px 8%;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 35px;
-    font-size: 30px;
-    color: #d6ad55;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 22px;
+main {
+    max-width: 850px;
+    margin: 50px auto;
+    padding: 20px;
 }
 
 .card {
     background: #151515;
-    border: 1px solid #35302a;
-    padding: 28px;
-    border-radius: 14px;
-    transition: .3s;
+    border: 1px solid #9e7d32;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 25px;
 }
 
-.card:hover {
-    transform: translateY(-6px);
-    border-color: #d6ad55;
+h2 {
+    color: #d8b45a;
+    margin-bottom: 18px;
 }
 
-.card h3 {
-    color: #d6ad55;
-    margin-bottom: 14px;
-}
-
-.card p {
-    color: #bbb;
+p {
+    color: #ccc;
     line-height: 1.6;
 }
 
-.prompt-area {
-    max-width: 750px;
-    margin: auto;
-    background: #151515;
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid #d6ad55;
-}
-
-textarea {
-    width: 100%;
-    min-height: 130px;
-    background: #080808;
-    color: white;
-    padding: 15px;
-    border: 1px solid #555;
-    border-radius: 8px;
-    resize: vertical;
-    font-size: 15px;
-}
-
 button {
-    background: #d6ad55;
+    background: #d8b45a;
     color: #080808;
     border: none;
-    padding: 13px 22px;
-    border-radius: 7px;
-    font-weight: bold;
+    padding: 14px 22px;
+    border-radius: 8px;
     cursor: pointer;
-    margin-top: 15px;
+    font-weight: bold;
+    transition: 0.2s;
 }
 
 button:hover {
-    background: #f0cb79;
+    background: #f1d17c;
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+    transform: none;
+}
+
+#quiz, #result {
+    display: none;
+}
+
+#progress {
+    color: #d8b45a;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #333;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+#progressBar {
+    height: 100%;
+    width: 0%;
+    background: #d8b45a;
+    transition: 0.3s;
+}
+
+#answers {
+    display: grid;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.answer {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    background: #242424;
+    color: white;
+    border: 1px solid #444;
+}
+
+.answer:hover:not(:disabled) {
+    background: #383838;
+}
+
+.answer.correct {
+    background: #176b3a;
+    border-color: #36c878;
+    color: white;
+}
+
+.answer.wrong {
+    background: #8b2525;
+    border-color: #e34b4b;
+    color: white;
+}
+
+#feedback {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#result {
+    text-align: center;
+}
+
+#score {
+    font-size: 25px;
+    color: #d8b45a;
+    margin: 20px 0;
 }
 
 footer {
     text-align: center;
-    padding: 30px;
-    color: #888;
-    border-top: 1px solid #333;
-}
-
-@media(max-width:600px) {
-    header {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    nav a {
-        margin: 0 7px;
-    }
-
-    .hero h1 {
-        font-size: 36px;
-    }
+    padding: 25px;
+    color: #777;
+    border-top: 1px solid #222;
 }
 </style>
 </head>
@@ -170,110 +167,331 @@ footer {
 <body>
 
 <header>
-    <div class="logo">IA NA PRÁTICA.</div>
-    <nav>
-        <a href="#inicio">Início</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#ferramentas">Ferramentas</a>
-        <a href="#prompts">Prompts</a>
-    </nav>
+    <h1>IA NA PRÁTICA</h1>
+    <p>Conhecimento, criatividade e inteligência artificial.</p>
 </header>
 
 <main>
 
-<section class="hero" id="inicio">
-    <h1>O futuro começa <span>na prática.</span></h1>
+<section class="card" id="home">
+    <h2>Desafie seu conhecimento!</h2>
+
     <p>
-        Descubra como a inteligência artificial pode transformar
-        ideias em possibilidades e facilitar o seu dia a dia.
+        Teste seus conhecimentos sobre inteligência artificial,
+        tecnologia e criatividade.
     </p>
+
+    <button onclick="startQuiz()">COMEÇAR QUIZ</button>
 </section>
 
-<section id="sobre">
-    <h2 class="section-title">Sobre o projeto</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Nossa missão</h3>
-            <p>Mostrar como a inteligência artificial pode ser utilizada de maneira criativa, responsável e inteligente.</p>
-        </div>
+<section class="card" id="quiz">
 
-        <div class="card">
-            <h3>Nosso objetivo</h3>
-            <p>Apresentar ferramentas e possibilidades da IA para estudantes e toda a comunidade escolar.</p>
-        </div>
+    <p id="progress"></p>
 
-        <div class="card">
-            <h3>Aprendizado</h3>
-            <p>Explorar novas ideias, desenvolver criatividade e descobrir o potencial da tecnologia.</p>
-        </div>
+    <div class="progress-container">
+        <div id="progressBar"></div>
     </div>
+
+    <h2 id="question"></h2>
+
+    <div id="answers"></div>
+
+    <p id="feedback"></p>
+
+    <button id="next" onclick="nextQuestion()" disabled>
+        PRÓXIMA PERGUNTA
+    </button>
+
 </section>
 
-<section id="ferramentas">
-    <h2 class="section-title">Ferramentas de IA</h2>
+<section class="card" id="result">
 
-    <div class="cards">
-        <div class="card">
-            <h3>ChatGPT</h3>
-            <p>Uma ferramenta de inteligência artificial para conversar, estudar e desenvolver ideias.</p>
-            <a href="https://chatgpt.com" target="_blank">Acessar</a>
-        </div>
+    <h2>QUIZ FINALIZADO!</h2>
 
-        <div class="card">
-            <h3>Gemini</h3>
-            <p>Explore ideias, faça perguntas e conheça diferentes possibilidades da IA.</p>
-            <a href="https://gemini.google.com" target="_blank">Acessar</a>
-        </div>
+    <p id="score"></p>
 
-        <div class="card">
-            <h3>Canva</h3>
-            <p>Crie apresentações, designs e materiais visuais com recursos inteligentes.</p>
-            <a href="https://www.canva.com" target="_blank">Acessar</a>
-        </div>
-    </div>
-</section>
+    <p id="message"></p>
 
-<section id="prompts">
-    <h2 class="section-title">Laboratório de ideias</h2>
+    <button onclick="restartQuiz()">JOGAR NOVAMENTE</button>
 
-    <div class="prompt-area">
-        <h3>Crie seu próprio prompt</h3>
-        <p style="color:#aaa; margin:12px 0;">
-            Escreva uma ideia e copie seu prompt.
-        </p>
-
-        <textarea id="prompt" placeholder="Exemplo: Crie uma história sobre o futuro da educação..."></textarea>
-
-        <button onclick="copiarPrompt()">Copiar prompt</button>
-        <p id="mensagem" style="margin-top:12px;color:#d6ad55;"></p>
-    </div>
 </section>
 
 </main>
 
 <footer>
-    <p>IA na Prática | Educação, criatividade e inovação.</p>
-    <p style="margin-top:10px;">Projeto escolar • 2026</p>
+    IA na Prática © 2026
+    <p>Aprender. Experimentar. Evoluir.</p>
 </footer>
 
 <script>
-function copiarPrompt() {
-    const texto = document.getElementById("prompt").value;
 
-    if (!texto.trim()) {
-        document.getElementById("mensagem").textContent =
-            "Escreva uma ideia primeiro!";
-        return;
+const questions = [
+
+{
+    question: "O que significa IA?",
+    answers: [
+        "Internet Automática",
+        "Inteligência Artificial",
+        "Informação Avançada",
+        "Interface Automática"
+    ],
+    correct: 1
+},
+
+{
+    question: "Qual é uma função da inteligência artificial?",
+    answers: [
+        "Ajudar a analisar informações",
+        "Substituir toda a internet",
+        "Criar energia do nada",
+        "Desligar todos os computadores"
+    ],
+    correct: 0
+},
+
+{
+    question: "O que é um prompt?",
+    answers: [
+        "Um tipo de computador",
+        "Uma instrução enviada à IA",
+        "Um programa antivírus",
+        "Uma rede social"
+    ],
+    correct: 1
+},
+
+{
+    question: "Qual destas ferramentas utiliza inteligência artificial?",
+    answers: [
+        "Calculadora comum",
+        "Bloco de notas",
+        "ChatGPT",
+        "Teclado"
+    ],
+    correct: 2
+},
+
+{
+    question: "A inteligência artificial pode cometer erros?",
+    answers: [
+        "Não, nunca",
+        "Sim, pode apresentar informações incorretas",
+        "Somente aos domingos",
+        "Não precisa de dados"
+    ],
+    correct: 1
+},
+
+{
+    question: "O que é um algoritmo?",
+    answers: [
+        "Uma sequência de instruções",
+        "Um monitor",
+        "Uma bateria",
+        "Um aplicativo de música"
+    ],
+    correct: 0
+},
+
+{
+    question: "Qual é uma utilização da IA na educação?",
+    answers: [
+        "Ajudar nos estudos",
+        "Destruir livros",
+        "Impedir pesquisas",
+        "Desligar a escola"
+    ],
+    correct: 0
+},
+
+{
+    question: "O que devemos fazer com informações geradas por IA?",
+    answers: [
+        "Acreditar em tudo",
+        "Nunca ler",
+        "Verificar se são confiáveis",
+        "Compartilhar sem conferir"
+    ],
+    correct: 2
+},
+
+{
+    question: "O que é aprendizado de máquina?",
+    answers: [
+        "Uma técnica que identifica padrões usando dados",
+        "Uma máquina de lavar",
+        "Um jogo eletrônico",
+        "Um tipo de teclado"
+    ],
+    correct: 0
+},
+
+{
+    question: "Qual é o objetivo do IA na Prática?",
+    answers: [
+        "Proibir tecnologia",
+        "Explorar a inteligência artificial na prática",
+        "Substituir professores",
+        "Criar redes sociais"
+    ],
+    correct: 1
+}
+
+];
+
+let current = 0;
+let points = 0;
+let answered = false;
+
+function startQuiz() {
+
+    current = 0;
+    points = 0;
+
+    document.getElementById("home").style.display = "none";
+    document.getElementById("result").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
+
+    showQuestion();
+}
+
+function showQuestion() {
+
+    answered = false;
+
+    const q = questions[current];
+
+    document.getElementById("progress").textContent =
+        `PERGUNTA ${current + 1} DE ${questions.length}`;
+
+    document.getElementById("progressBar").style.width =
+        `${(current / questions.length) * 100}%`;
+
+    document.getElementById("question").textContent = q.question;
+
+    document.getElementById("feedback").textContent = "";
+
+    document.getElementById("next").disabled = true;
+
+    const answers = document.getElementById("answers");
+
+    answers.innerHTML = "";
+
+    q.answers.forEach((answer, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "answer";
+
+        button.textContent = answer;
+
+        button.onclick = () => checkAnswer(index, button);
+
+        answers.appendChild(button);
+
+    });
+
+}
+
+function checkAnswer(index, selected) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const q = questions[current];
+
+    const buttons = document.querySelectorAll(".answer");
+
+    buttons.forEach((button, i) => {
+
+        button.disabled = true;
+
+        if (i === q.correct) {
+            button.classList.add("correct");
+        }
+
+    });
+
+    if (index === q.correct) {
+
+        points++;
+
+        document.getElementById("feedback").textContent =
+            "Resposta correta! Muito bem!";
+
+    } else {
+
+        selected.classList.add("wrong");
+
+        document.getElementById("feedback").textContent =
+            "Resposta incorreta! A resposta correta está em verde.";
+
     }
 
-    navigator.clipboard.writeText(texto).then(() => {
-        document.getElementById("mensagem").textContent =
-            "Prompt copiado com sucesso!";
-    }).catch(() => {
-        document.getElementById("mensagem").textContent =
-            "Não foi possível copiar automaticamente.";
-    });
+    document.getElementById("next").disabled = false;
+
 }
+
+function nextQuestion() {
+
+    current++;
+
+    if (current < questions.length) {
+
+        showQuestion();
+
+    } else {
+
+        finishQuiz();
+
+    }
+
+}
+
+function finishQuiz() {
+
+    document.getElementById("quiz").style.display = "none";
+
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("progressBar").style.width = "100%";
+
+    document.getElementById("score").textContent =
+        `Você acertou ${points} de ${questions.length} perguntas!`;
+
+    let message = "";
+
+    if (points === 10) {
+
+        message = "PERFEITO! Você é um mestre da IA!";
+
+    } else if (points >= 7) {
+
+        message = "Muito bem! Você conhece bastante sobre IA!";
+
+    } else if (points >= 4) {
+
+        message = "Bom trabalho! Continue aprendendo!";
+
+    } else {
+
+        message = "Continue estudando. O conhecimento vem com a prática!";
+
+    }
+
+    document.getElementById("message").textContent = message;
+
+}
+
+function restartQuiz() {
+
+    document.getElementById("result").style.display = "none";
+
+    document.getElementById("home").style.display = "block";
+
+}
+
 </script>
 
 </body>
